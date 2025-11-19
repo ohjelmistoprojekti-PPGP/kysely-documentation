@@ -1,9 +1,11 @@
 # Surveys
 <!-- Description? -->
 
-## Base URL
 
-https://kysely-spring-git-backend.2.rahtiapp.fi/api/surveys
+### Base URL
+
+`https://kysely-spring-git-backend.2.rahtiapp.fi/api/surveys`
+
 
 ## Endpoints
 
@@ -53,7 +55,7 @@ Fetch a specific survey by it's unique identifier
 **Request:**
 - HTTP Method: `GET`
 - Endpoint: `/surveys/{id}`
-- Path Parameters: {id} (long, required) is the unique identifier of the survey
+- Path Parameters: `{id}` (long, required): The unique identifier of the survey
 
 **Example Request:**
 `GET /surveys/2`
@@ -78,7 +80,7 @@ Fetch a specific survey by it's unique identifier
 
 <!-- Tää on mulle ihan kysymysmerkki -->
 ### Create a new survey
-Create a new survey
+Create a new survey.
 
 **Request:**
 
@@ -106,42 +108,54 @@ Content-Type: application/json
 ```
 
 **Response:**
-- Body: JSON object with the created survey's details
+- Body: JSON object with the created survey's details.
 
 
 ### Update survey
-Fetch xxx
+Update a specific survey's details.
 
 **Request:**
-- HTTP Method:
-- Endpoint:
-- Request Parameters:
+- HTTP Method: `PUT`
+- Endpoint: `/surveys/{id}`
+- Path Parameters: `{id}` (long, required): The unique identifier of the survey
+- Request Headers:
+    - `'Content-Type' : 'application/json`
+- Request body: JSON object containing the updated survey details (all fields optional)
+
+**Example Request:**
+
+```
+PUT /surveys/3
+Content-Type: application/json
+
+{
+    "surveyName": "Leipätesti",
+    "surveyDesc": "Mikä leipä olisit",
+    "createdDate": "2025-11-19T13:00:20.553279",
+    "startingDate": "20.11.2025",
+    "endingDate": "30.11.2025"
+}
+```
 
 **Response:**
-
-**Example Response:**
-
-```
-
-```
+- Body: JSON object with the updated survey's details.
 
 
 ### Delete survey
-Fetch xxx
+Delete a specific survey.
 
 **Request:**
-- HTTP Method:
-- Endpoint:
-- Request Parameters:
+- HTTP Method: `DELETE`
+- Endpoint: `/surveys/{id}`
+- Path Parameters: `{id}` (long, required): The unique identifier of the survey
 
 **Response:**
+<!-- ???????  -->
+Upon successful deletion, the API will return a 204 No Content status code. If the customer with the provided id does not exist, the API will return a 404 Not Found status code.
 
-**Example Response:**
-
-```
-
-```
-
+**Important Note:**
+Deleting a survey will also delete all associated questions and responses. This operation cannot be undone, so ensure that you want to delete the survey and all it's associated features before making this request.
 
 ## Notes:
-- Minttu (19.11.2025): Work in progress
+- **Minttu** (19.11.2025): Work in progress
+
