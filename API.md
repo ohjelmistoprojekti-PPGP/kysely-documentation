@@ -8,7 +8,7 @@ This REST API is designed to manage the relationship between surveys and it's qu
 This is BAse API documentation, which means more detailed API documentation is portrayed in each API's documentation file. You can browse different files by clicking the links in the following overview or by using these URL's:
 
 **Surveys:**
-<!-- TO-DO: API-doc linkki -->
+https://github.com/ohjelmistoprojekti-PPGP/kysely-documentation/blob/fe9d454bdf17cbb1bc2ff132d0f0abf754a10554/APISurveys.md
 
 **Questions:**
 <!-- TO-DO: API-doc linkki -->
@@ -20,7 +20,7 @@ This is BAse API documentation, which means more detailed API documentation is p
 ## Overview
 <!-- TO-DO: linkit API-dokumentaatioihin -->
 The API is structured around three main resources: Surveys, Questions and Responses. 
-- Surveys present information of the survey and a list of questions that can be answered. Each survey also has attributes such as name, description, date of creation and starting date and ending date for responding.
+- [Surveys](APISurveys.md) present information of the survey and a list of questions that can be answered. Each survey also has attributes such as name, description, date of creation and starting date and ending date for responding.
 - Questions represent interactive fields for surveys. Each question has attributes like the question's type (either  text field or multiple choice via radio button), and the question's heading.
 - Responses present a list of responses to a survey or a specific question. Each response has an attribute of response's text or choice in addition of the question it's associated with.
 
@@ -63,9 +63,11 @@ Upon successful loading, the base API will return a 200 OK status code to the co
 }
 ```
 
-Error Response: Browser's general error message
+### Error Response:
+Browser's general error message
 
 ## Notes:
 - **Minttu** (19.11.2025): Work in progress
+
 
 
