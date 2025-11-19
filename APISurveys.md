@@ -12,22 +12,22 @@ Fetch all existing surveys
 
 Request:
 
-- HTTP Method: ´´´GET´´´
-- Endpoint: ´´´/surveys´´´
+- HTTP Method: `GET`
+- Endpoint: `/surveys`
 - Request Parameters: None
 
-Response: JSON object with an ´´´_embedded´´´ field containing an array of surveys. Each survey object includes the following fields:
-- ´´´surveyId:´´´ The survey's automatically generated, distinctive number. (long)
-- ´´´surveyName:´´´ The survey's name. (string)
-- ´´´surveyDesc:´´´ The survey's description. (string)
-- ´´´createdDate:´´´ The survey's date of creation, generated automatically to correspond current date. (localDateTime)
-- ´´´startingDate:´´´ Date when the survey starts accepting answers. (string)
-- ´´´endingDate:´´´ Date when the survey stops accepting answers. (string)
+Response: JSON object with an `_embedded` field containing an array of surveys. Each survey object includes the following fields:
+- `surveyId:` The survey's automatically generated, distinctive number. (long)
+- `surveyName:` The survey's name. (string)
+- `surveyDesc:` The survey's description. (string)
+- `createdDate:`  The survey's date of creation, generated automatically to correspond current date. (localDateTime)
+- `startingDate:` Date when the survey starts accepting answers. (string)
+- `endingDate:` Date when the survey stops accepting answers. (string)
 <!-- A list of questions and answers? -->
 
 Example Response:
 
-´´´
+```
   {
     "surveyId": 2,
     "surveyName": "HH-kysely",
@@ -36,7 +36,7 @@ Example Response:
     "startingDate": "13.11.2025",
     "endingDate": "22.12.2025"
   }
-´´´
+```
 
 
 ### Get survey by id
@@ -92,5 +92,6 @@ Response:
 Example Response:
 
 ## Notes:
+
 
 <This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here.>
