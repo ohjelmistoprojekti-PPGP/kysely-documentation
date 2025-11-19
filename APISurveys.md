@@ -16,7 +16,8 @@ Fetch all existing surveys
 - Endpoint: `/surveys`
 - Request Parameters: None
 
-**Response:** JSON object with an `_embedded` field containing an array of surveys. Each survey object includes the following fields:
+**Response:**
+JSON object with an `_embedded` field containing an array of surveys. Each survey object includes the following fields:
 - `surveyId:` The survey's automatically generated, unique identifier. (long)
 - `surveyName:` The survey's name. (string)
 - `surveyDesc:` The survey's description. (string)
@@ -50,10 +51,9 @@ Fetch all existing surveys
 Fetch a specific survey by it's unique identifier
 
 **Request:**
-
 - HTTP Method: `GET`
 - Endpoint: `/surveys/{id}`
-- Request Parameters: {id} (long, required) is the unique identifier of the survey
+- Path Parameters: {id} (long, required) is the unique identifier of the survey
 
 **Example Request:**
 `GET /surveys/2`
@@ -63,6 +63,7 @@ Fetch a specific survey by it's unique identifier
 
 
 **Example Response:**
+
 ```
 {
   "surveyId": 2,
@@ -75,35 +76,51 @@ Fetch a specific survey by it's unique identifier
 ```
 
 
+<!-- Tää on mulle ihan kysymysmerkki -->
 ### Create a new survey
-Fetch xxx
+Create a new survey
 
 **Request:**
 
-- HTTP Method: ``
-- Endpoint: ``
-- Request Parameters:
+- HTTP Method: `POST`
+- Endpoint: `/surveys`
+- Request Headers:
+    - `'Content-Type' : 'application/json'` 
+    <!-- ???? -->
+- Request Body: JSON object with the following fields (all required)
+    - `surveyName:` The survey's name. (string, required)
+    - `surveyDesc:` The survey's description. (string)
+    - `startingDate:` Date when the survey starts accepting answers. (string, required)
+    - `endingDate:` Date when the survey stops accepting answers. (string, required)
+
+**Example Request:**
+```
+POST https://kysely-spring-git-backend.2.rahtiapp.fi/api/surveys
+Content-Type: application/json
+{
+    "surveyName": "Leipätesti",
+    "surveyDesc": "Mikä leipä olisit",
+    "startingDate": "20.11.2025",
+    "endingDate": "30.11.2025"
+}
+```
 
 **Response:**
-
-**Example Response:**
-```
-
-```
+- Body: JSON object with the created survey's details
 
 
 ### Update survey
 Fetch xxx
 
 **Request:**
-
-- HTTP Method: ``
-- Endpoint: ``
+- HTTP Method:
+- Endpoint:
 - Request Parameters:
 
 **Response:**
 
 **Example Response:**
+
 ```
 
 ```
@@ -113,18 +130,18 @@ Fetch xxx
 Fetch xxx
 
 **Request:**
-
-- HTTP Method: ``
-- Endpoint: ``
+- HTTP Method:
+- Endpoint:
 - Request Parameters:
 
 **Response:**
 
-Example Response:
+**Example Response:**
+
 ```
 
 ```
 
 
 ## Notes:
-- **Minttu** (19.11.2025): Work in progress
+- Minttu (19.11.2025): Work in progress
