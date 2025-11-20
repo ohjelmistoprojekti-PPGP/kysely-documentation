@@ -48,7 +48,7 @@ JSON object with an `_embedded` field containing an array of surveys. Each surve
     "endingDate": "22.12.2025"
   }
 ```
-
+***
 ### Get survey by id
 Fetch a specific survey by it's unique identifier
 
@@ -76,8 +76,7 @@ Fetch a specific survey by it's unique identifier
   "endingDate": "22.12.2025"
 }
 ```
-
-
+***
 <!-- Tää on mulle ihan kysymysmerkki -->
 ### Create a new survey
 Create a new survey.
@@ -109,8 +108,7 @@ Content-Type: application/json
 
 **Response:**
 - Body: JSON object with the created survey's details.
-
-
+***
 ### Update survey
 Update a specific survey's details.
 
@@ -139,8 +137,7 @@ Content-Type: application/json
 
 **Response:**
 - Body: JSON object with the updated survey's details.
-
-
+***
 ### Delete survey
 Delete a specific survey.
 
@@ -158,4 +155,5 @@ Deleting a survey will also delete all associated questions and responses. This 
 
 ## Notes:
 - **Minttu** (19.11.2025): Work in progress
+
 
