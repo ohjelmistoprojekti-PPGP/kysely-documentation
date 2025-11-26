@@ -10,18 +10,18 @@ This backend and its API primarily provides server-rendered Thymeleaf views, but
 ## User Instructions
 
 This API-documentation follows a single-file format for easier maintenance purposes. You can browse different sections by clicking the links below:
-
+***
 [**Surveys**](#surveys)
 ***
 [**Questions:**](#questions)
 ***
 [**Responses:**](#repsonses)
-
+***
 
 ## Overview
 The API is structured around three main resources: Surveys, Questions and Responses. 
-[**Surveys**](#surveys) present information of the survey and a list of questions that can be answered. Each survey also has attributes such as name, description, date of creation and starting date and ending date for responding.
-[**Questions:**](#questions) represent interactive fields for surveys. Each question has attributes like the question's type (either  text field or multiple choice via radio button), and the question's heading.
+- [**Surveys**](#surveys) present information of the survey and a list of questions that can be answered. Each survey also has attributes such as name, description, date of creation and starting date and ending date for responding.
+- [**Questions:**](#questions) represent interactive fields for surveys. Each question has attributes like the question's type (either  text field or multiple choice via radio button), and the question's heading.
 - [**Responses:**](#responses) present a list of responses to a survey or a specific question. Each response has an attribute of response's text or choice in addition of the question it's associated with.
 
 There is a one-to-many relationship between surveys and questions, which means one survey an have multiple questions, but one question can be associated with only one survey.
@@ -651,6 +651,7 @@ description
 ```
 ***
 --!>
+
 
 
 
