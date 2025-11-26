@@ -1,6 +1,7 @@
 # Surveys
-<!-- Description? -->
+This backend primarily provides server-rendered Thymeleaf views, but it also exposes a small number of REST endpoints for saving survey responses. These endpoints are intended for use by JavaScript calls or external tools (Bruno/Postman).
 
+**Note:** This backend is not designed as a full REST API. Only the endpoints listed here are intended to be used programmatically.
 
 ### Base URL
 
@@ -15,50 +16,21 @@ Fetch all existing surveys
 **Request:**
 
 - HTTP Method: `GET`
-- Endpoint: `/surveys`
+- Endpoint: `/api/surveys`
 - Request Parameters: None
 
 **Response:**
-JSON object with an `_embedded` field containing an array of surveys. Each survey object includes the following fields:
+JSON object containing an array of surveys. Each survey object includes the following fields:
 - `surveyId:` The survey's automatically generated, unique identifier. (long)
 - `surveyName:` The survey's name. (string)
 - `surveyDesc:` The survey's description. (string)
 - `createdDate:`  The survey's date of creation, generated automatically to correspond current date. (localDateTime)
 - `startingDate:` Date when the survey starts accepting answers. (string)
 - `endingDate:` Date when the survey stops accepting answers. (string)
-<!-- A list of questions and answers? -->
 
 **Example Response:**
 
 ```
-{
-    "surveyId": 1,
-    "surveyName": "Eläintesti",
-    "surveyDesc": "Selvitä mikä eläin olet",
-    "createdDate": "2025-11-25T19:13:53.558667",
-    "startingDate": "12.12.2025",
-    "endingDate": "12.12.2025",
-    "questions": [
-      {
-        "questionId": 1,
-        "questionText": "Oletko viekas",
-        "questionType": "text",
-        "options": []
-      },
-      {
-        "questionId": 2,
-        "questionText": "Oletko älykäs",
-        "questionType": "text",
-        "options": []
-      },
-      {
-        "questionId": 3,
-        "questionText": "Oletko lempeä",
-        "questionType": "text",
-        "options": []
-      }
-    ]
-  },
   {
     "surveyId": 2,
     "surveyName": "HH-kysely",
@@ -147,7 +119,7 @@ JSON object with an `_embedded` field containing an array of surveys. Each surve
     "surveyDesc": "1 monivalinta kysymys ja 1 tekstikysymys",
     "createdDate": "2025-11-25T19:13:54.451125",
     "startingDate": "18.11.2025",
-    "endingDate": "20.1.2.2025",
+    "endingDate": "20.12.2025",
     "questions": [
       {
         "questionId": 16,
@@ -167,44 +139,30 @@ JSON object with an `_embedded` field containing an array of surveys. Each surve
         "options": []
       }
     ]
-  },
-  {
-    "surveyId": 4,
-    "surveyName": "Testi kysely",
-    "surveyDesc": "Tarkoitus on testata onnistuuko kyselyn luonti Rahdin kautta ja hakeeko julkaistu front end sen.",
-    "createdDate": "2025-11-25T19:21:50.249925",
-    "startingDate": "2025-11-25",
-    "endingDate": "2025-11-30",
-    "questions": [
-      {
-        "questionId": 18,
-        "questionText": "Miten hyvin tämä toimii?",
-        "questionType": "text",
-        "options": []
-      },
-      {
-        "questionId": 19,
-        "questionText": "Monivalintakysymykset näkyy ne:",
-        "questionType": "radioButton",
-        "options": [
-          "Oikein ",
-          "Väärin"
-        ]
-      }
-    ]
   }
 ```
+
+**Notes:** 
+- More surveys omitted for brevity.
+- `options` is an empty array for text questions and only populated for multiple-choice/radio questions.
+
+**Possible status codes:**
+- `200 OK` – Request succeeded
+- `404 Not Found` - Survey not found
+- `500 Internal Server Error`
+
 ***
+
 ### Get survey by id
-Fetch a specific survey by it's unique identifier
+Fetch a specific survey by its unique identifier
 
 **Request:**
 - HTTP Method: `GET`
-- Endpoint: `/surveys/{id}`
-- Path Parameters: `{id}` (long, required): The unique identifier of the survey
+- Endpoint: `/api/surveys/{surveyId}`
+- Path Parameters: `surveyId` (long, required): The unique identifier of the survey
 
 **Example Request:**
-`GET /surveys/2`
+`GET /api/surveys/2`
 
 **Response:**
 - Body: JSON object with the survey's details.
@@ -296,85 +254,325 @@ Fetch a specific survey by it's unique identifier
   ]
 }
 ```
+
+**Possible status codes:**
+- `200 OK` – Request succeeded
+- `404 Not Found` - Survey not found: `{surveyId}`
+- `500 Internal Server Error`
+
 ***
-<!-- Tää on mulle ihan kysymysmerkki -->
-### Create a new survey
-Create a new survey.
+
+### Get Questions by Survey Id
+Fetch a specific survey's questions by its unique identifier
 
 **Request:**
+- HTTP Method: `GET`
+- Endpoint: `/api/surveys/{surveyId}/questions`
+- Path Parameters: `{surveyId}` (long, required): The unique identifier of the survey
 
+
+**Example Request:**
+`GET /api/surveys/2/questions`
+
+**Response:**
+- Body: JSON array of objects with the survey's question details. No survey details included.
+
+**Example Response:**
+```
+  {
+    "questionId": 4,
+    "questionText": "Monennenko vuoden opiskelija olet?",
+    "questionType": "text",
+    "options": []
+  },
+  {
+    "questionId": 5,
+    "questionText": "Opintojesi suuntaus?",
+    "questionType": "text",
+    "options": []
+  },
+  {
+    "questionId": 6,
+    "questionText": "Opintojesi toteutusmuoto?",
+    "questionType": "text",
+    "options": []
+  },
+  {
+    "questionId": 7,
+    "questionText": "Ikäsi:",
+    "questionType": "text",
+    "options": []
+  },
+  {
+    "questionId": 8,
+    "questionText": "Sukupuolesi:",
+    "questionType": "text",
+    "options": []
+  },
+  {
+    "questionId": 9,
+    "questionText": "Arviosi kurssitarjonnasta suuntautumisessasi:",
+    "questionType": "text",
+    "options": []
+  },
+  {
+    "questionId": 10,
+    "questionText": "Arviosi opetuksen laadusta:",
+    "questionType": "text",
+    "options": []
+  },
+  {
+    "questionId": 11,
+    "questionText": "Kuinka hyvin koet opintojen valmistavan sinua työelämään?",
+    "questionType": "text",
+    "options": []
+  },
+  {
+    "questionId": 12,
+    "questionText": "Kuinka hyvin koet kurssien vastaavan kuvauksia?",
+    "questionType": "text",
+    "options": []
+  },
+  {
+    "questionId": 13,
+    "questionText": "Kuinka todennäköisesti suosittelisit omaa suuntautumistasi muille? (1-5)",
+    "questionType": "text",
+    "options": []
+  },
+  {
+    "questionId": 14,
+    "questionText": "Kuinka todennäköisesti suosittelisit HH IT-Tradenomin koulutusohjelmaa muille? (1-5)",
+    "questionType": "text",
+    "options": []
+  },
+  {
+    "questionId": 15,
+    "questionText": "Vapaata palautetta/kehitysideoita:",
+    "questionType": "text",
+    "options": []
+  }
+```
+
+**Possible status codes:**
+- `200 OK` – Request succeeded
+- `404 Not Found` - Survey or questions not found
+- `500 Internal Server Error`
+
+***
+## Save Survey Responses
+Saves one or more responses to a specific survey.
+Although the backend mainly serves Thymeleaf-rendered pages, this endpoint is intentionally exposed for AJAX or external clients (Bruno/Postman).
+
+**Request:**
 - HTTP Method: `POST`
-- Endpoint: `/surveys`
-- Request Headers:
-    - `'Content-Type' : 'application/json'` 
-    <!-- ???? -->
-- Request Body: JSON object with the following fields (all required)
-    - `surveyName:` The survey's name. (string, required)
-    - `surveyDesc:` The survey's description. (string)
-    - `startingDate:` Date when the survey starts accepting answers. (string, required)
-    - `endingDate:` Date when the survey stops accepting answers. (string, required)
+- Endpoint: `/api/surveys/{surveyId}/responses`
+- Path Parameters: `{surveyId}` (Long, required): The unique identifier of the survey to which the responses belong.
 
 **Example Request:**
 ```
-POST https://kysely-spring-git-backend.2.rahtiapp.fi/api/surveys
+POST /api/surveys/2/responses
 Content-Type: application/json
-{
-    "surveyName": "Leipätesti",
-    "surveyDesc": "Mikä leipä olisit",
-    "startingDate": "20.11.2025",
-    "endingDate": "30.11.2025"
-}
+
+[
+  {
+    "responseText": "Sample answer",
+    "question": {
+      "questionId": 5
+    }
+  }
+]
 ```
 
 **Response:**
-- Body: JSON object with the created survey's details.
+- Body: JSON array of objects of the saved responses. Includes generated fields such as `responseId` and full question details.
+
+**Example Response:**
+```
+[
+  {
+    "responseId": 28,
+    "responseText": "Testivastaus",
+    "question": {
+      "questionId": 5,
+      "questionText": "Opintojesi suuntaus?",
+      "questionType": "text",
+      "options": []
+    }
+  }
+]
+```
+
+**Possible status codes:**
+- `200 OK` – Request succeeded
+- `400 Bad Request` – Invalid request body
+- `404 Not Found` – Question not found
+
 ***
-### Update survey
-Update a specific survey's details.
+## Get all Responses by surveyId
+Fetch all responses of a specific survey by its unique identifier
 
 **Request:**
-- HTTP Method: `PUT`
-- Endpoint: `/surveys/{id}`
-- Path Parameters: `{id}` (long, required): The unique identifier of the survey
-- Request Headers:
-    - `'Content-Type' : 'application/json`
-- Request body: JSON object containing the updated survey details (all fields optional)
+- HTTP Method: `GET`
+- Endpoint: `/api/surveys/{surveyId}/responses`
+- Path Parameters: `{surveyId}` (Long, required): The unique identifier of the survey to which the responses belong 
 
 **Example Request:**
-
-```
-PUT /surveys/3
-Content-Type: application/json
-
-{
-    "surveyName": "Leipätesti",
-    "surveyDesc": "Mikä leipä olisit",
-    "createdDate": "2025-11-19T13:00:20.553279",
-    "startingDate": "20.11.2025",
-    "endingDate": "30.11.2025"
-}
-```
+`GET /api/surveys/2/responses`
 
 **Response:**
-- Body: JSON object with the updated survey's details.
+- Body: JSON array of objects with all of the survey's response details.
+
+**Example Response:**
+```
+  {
+    "responseId": 4,
+    "responseText": "Toisen vuoden opiskelija",
+    "question": {
+      "questionId": 4,
+      "questionText": "Monennenko vuoden opiskelija olet?",
+      "questionType": "text",
+      "options": []
+    }
+  },
+  {
+    "responseId": 5,
+    "responseText": "Ohjelmistokehitys",
+    "question": {
+      "questionId": 5,
+      "questionText": "Opintojesi suuntaus?",
+      "questionType": "text",
+      "options": []
+    }
+  },
+  {
+    "responseId": 6,
+    "responseText": "Päivätoteutus",
+    "question": {
+      "questionId": 6,
+      "questionText": "Opintojesi toteutusmuoto?",
+      "questionType": "text",
+      "options": []
+    }
+  },
+  {
+    "responseId": 7,
+    "responseText": "31",
+    "question": {
+      "questionId": 7,
+      "questionText": "Ikäsi:",
+      "questionType": "text",
+      "options": []
+    }
+  },
+  {
+    "responseId": 8,
+    "responseText": "Nainen",
+    "question": {
+      "questionId": 8,
+      "questionText": "Sukupuolesi:",
+      "questionType": "text",
+      "options": []
+    }
+  },
+  {
+    "responseId": 9,
+    "responseText": "Tarjontaa on hyvin",
+    "question": {
+      "questionId": 9,
+      "questionText": "Arviosi kurssitarjonnasta suuntautumisessasi:",
+      "questionType": "text",
+      "options": []
+    }
+  },
+  {
+    "responseId": 10,
+    "responseText": "Hyvin paljon opettajakohtaista",
+    "question": {
+      "questionId": 10,
+      "questionText": "Arviosi opetuksen laadusta:",
+      "questionType": "text",
+      "options": []
+    }
+  },
+  {
+    "responseId": 11,
+    "responseText": "Osa kursseista hyvin, mutta valitettavasti suurin osa ei ollenkaan",
+    "question": {
+      "questionId": 11,
+      "questionText": "Kuinka hyvin koet opintojen valmistavan sinua työelämään?",
+      "questionType": "text",
+      "options": []
+    }
+  },
+  {
+    "responseId": 12,
+    "responseText": "Ei mielestäni joka kerta osu nappiin",
+    "question": {
+      "questionId": 12,
+      "questionText": "Kuinka hyvin koet kurssien vastaavan kuvauksia?",
+      "questionType": "text",
+      "options": []
+    }
+  },
+  {
+    "responseId": 13,
+    "responseText": "5",
+    "question": {
+      "questionId": 13,
+      "questionText": "Kuinka todennäköisesti suosittelisit omaa suuntautumistasi muille? (1-5)",
+      "questionType": "text",
+      "options": []
+    }
+  },
+  {
+    "responseId": 14,
+    "responseText": "3",
+    "question": {
+      "questionId": 14,
+      "questionText": "Kuinka todennäköisesti suosittelisit HH IT-Tradenomin koulutusohjelmaa muille? (1-5)",
+      "questionType": "text",
+      "options": []
+    }
+  },
+  {
+    "responseId": 15,
+    "responseText": "En osaa sanoa",
+    "question": {
+      "questionId": 15,
+      "questionText": "Vapaata palautetta/kehitysideoita:",
+      "questionType": "text",
+      "options": []
+    }
+  }
+```
+
+**Possible status codes:**
+- `200 OK` – Request succeeded
+- `404 Not Found` - Survey, questions or responses not found: `{surveyId}`
+- `500 Internal Server Error`
+
+<!-- Below is a template!
 ***
-### Delete survey
-Delete a specific survey.
+## Method
+description
 
 **Request:**
-- HTTP Method: `DELETE`
-- Endpoint: `/surveys/{id}`
-- Path Parameters: `{id}` (long, required): The unique identifier of the survey
+- HTTP Method: `GET`
+- Endpoint: `/`
+- Path Parameters: `{}` (type, (required)): The unique identifier of xxx
+
+**Example Request:**
+`GET / POST / PUT`
 
 **Response:**
-<!-- ???????  -->
-Upon successful deletion, the API will return a 204 No Content status code. If the customer with the provided id does not exist, the API will return a 404 Not Found status code.
+- Body:
 
-**Important Note:**
-Deleting a survey will also delete all associated questions and responses. This operation cannot be undone, so ensure that you want to delete the survey and all it's associated features before making this request.
+**Example Response:**
+```
+```
+***
+--!>
 
-## Notes:
-- **Minttu** (19.11.2025): Work in progress
 
 
 
