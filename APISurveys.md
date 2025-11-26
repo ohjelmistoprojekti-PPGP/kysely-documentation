@@ -31,21 +31,167 @@ JSON object with an `_embedded` field containing an array of surveys. Each surve
 **Example Response:**
 
 ```
-  {
+{
     "surveyId": 1,
     "surveyName": "Eläintesti",
     "surveyDesc": "Selvitä mikä eläin olet",
-    "createdDate": "2025-11-13T09:47:14.563923",
+    "createdDate": "2025-11-25T19:13:53.558667",
     "startingDate": "12.12.2025",
-    "endingDate": "12.12.2025"
+    "endingDate": "12.12.2025",
+    "questions": [
+      {
+        "questionId": 1,
+        "questionText": "Oletko viekas",
+        "questionType": "text",
+        "options": []
+      },
+      {
+        "questionId": 2,
+        "questionText": "Oletko älykäs",
+        "questionType": "text",
+        "options": []
+      },
+      {
+        "questionId": 3,
+        "questionText": "Oletko lempeä",
+        "questionType": "text",
+        "options": []
+      }
+    ]
   },
   {
     "surveyId": 2,
     "surveyName": "HH-kysely",
     "surveyDesc": "Kerro, mitä mieltä olet HH IT-Tradenomin koulutusohjelman opetuksen laadusta!",
-    "createdDate": "2025-11-13T09:47:15.573179",
+    "createdDate": "2025-11-25T19:13:54.43315",
     "startingDate": "13.11.2025",
-    "endingDate": "22.12.2025"
+    "endingDate": "22.12.2025",
+    "questions": [
+      {
+        "questionId": 4,
+        "questionText": "Monennenko vuoden opiskelija olet?",
+        "questionType": "text",
+        "options": []
+      },
+      {
+        "questionId": 5,
+        "questionText": "Opintojesi suuntaus?",
+        "questionType": "text",
+        "options": []
+      },
+      {
+        "questionId": 6,
+        "questionText": "Opintojesi toteutusmuoto?",
+        "questionType": "text",
+        "options": []
+      },
+      {
+        "questionId": 7,
+        "questionText": "Ikäsi:",
+        "questionType": "text",
+        "options": []
+      },
+      {
+        "questionId": 8,
+        "questionText": "Sukupuolesi:",
+        "questionType": "text",
+        "options": []
+      },
+      {
+        "questionId": 9,
+        "questionText": "Arviosi kurssitarjonnasta suuntautumisessasi:",
+        "questionType": "text",
+        "options": []
+      },
+      {
+        "questionId": 10,
+        "questionText": "Arviosi opetuksen laadusta:",
+        "questionType": "text",
+        "options": []
+      },
+      {
+        "questionId": 11,
+        "questionText": "Kuinka hyvin koet opintojen valmistavan sinua työelämään?",
+        "questionType": "text",
+        "options": []
+      },
+      {
+        "questionId": 12,
+        "questionText": "Kuinka hyvin koet kurssien vastaavan kuvauksia?",
+        "questionType": "text",
+        "options": []
+      },
+      {
+        "questionId": 13,
+        "questionText": "Kuinka todennäköisesti suosittelisit omaa suuntautumistasi muille? (1-5)",
+        "questionType": "text",
+        "options": []
+      },
+      {
+        "questionId": 14,
+        "questionText": "Kuinka todennäköisesti suosittelisit HH IT-Tradenomin koulutusohjelmaa muille? (1-5)",
+        "questionType": "text",
+        "options": []
+      },
+      {
+        "questionId": 15,
+        "questionText": "Vapaata palautetta/kehitysideoita:",
+        "questionType": "text",
+        "options": []
+      }
+    ]
+  },
+  {
+    "surveyId": 3,
+    "surveyName": "Elementtikysely",
+    "surveyDesc": "1 monivalinta kysymys ja 1 tekstikysymys",
+    "createdDate": "2025-11-25T19:13:54.451125",
+    "startingDate": "18.11.2025",
+    "endingDate": "20.1.2.2025",
+    "questions": [
+      {
+        "questionId": 16,
+        "questionText": "Minkä näistä valitsisit?",
+        "questionType": "radioButton",
+        "options": [
+          "tuli",
+          "vesi",
+          "ilma",
+          "maa"
+        ]
+      },
+      {
+        "questionId": 17,
+        "questionText": "Miksi valitsit juuri kyseisen elementin?",
+        "questionType": "text",
+        "options": []
+      }
+    ]
+  },
+  {
+    "surveyId": 4,
+    "surveyName": "Testi kysely",
+    "surveyDesc": "Tarkoitus on testata onnistuuko kyselyn luonti Rahdin kautta ja hakeeko julkaistu front end sen.",
+    "createdDate": "2025-11-25T19:21:50.249925",
+    "startingDate": "2025-11-25",
+    "endingDate": "2025-11-30",
+    "questions": [
+      {
+        "questionId": 18,
+        "questionText": "Miten hyvin tämä toimii?",
+        "questionType": "text",
+        "options": []
+      },
+      {
+        "questionId": 19,
+        "questionText": "Monivalintakysymykset näkyy ne:",
+        "questionType": "radioButton",
+        "options": [
+          "Oikein ",
+          "Väärin"
+        ]
+      }
+    ]
   }
 ```
 ***
@@ -71,9 +217,83 @@ Fetch a specific survey by it's unique identifier
   "surveyId": 2,
   "surveyName": "HH-kysely",
   "surveyDesc": "Kerro, mitä mieltä olet HH IT-Tradenomin koulutusohjelman opetuksen laadusta!",
-  "createdDate": "2025-11-13T09:47:15.573179",
+  "createdDate": "2025-11-25T19:13:54.43315",
   "startingDate": "13.11.2025",
-  "endingDate": "22.12.2025"
+  "endingDate": "22.12.2025",
+  "questions": [
+    {
+      "questionId": 4,
+      "questionText": "Monennenko vuoden opiskelija olet?",
+      "questionType": "text",
+      "options": []
+    },
+    {
+      "questionId": 5,
+      "questionText": "Opintojesi suuntaus?",
+      "questionType": "text",
+      "options": []
+    },
+    {
+      "questionId": 6,
+      "questionText": "Opintojesi toteutusmuoto?",
+      "questionType": "text",
+      "options": []
+    },
+    {
+      "questionId": 7,
+      "questionText": "Ikäsi:",
+      "questionType": "text",
+      "options": []
+    },
+    {
+      "questionId": 8,
+      "questionText": "Sukupuolesi:",
+      "questionType": "text",
+      "options": []
+    },
+    {
+      "questionId": 9,
+      "questionText": "Arviosi kurssitarjonnasta suuntautumisessasi:",
+      "questionType": "text",
+      "options": []
+    },
+    {
+      "questionId": 10,
+      "questionText": "Arviosi opetuksen laadusta:",
+      "questionType": "text",
+      "options": []
+    },
+    {
+      "questionId": 11,
+      "questionText": "Kuinka hyvin koet opintojen valmistavan sinua työelämään?",
+      "questionType": "text",
+      "options": []
+    },
+    {
+      "questionId": 12,
+      "questionText": "Kuinka hyvin koet kurssien vastaavan kuvauksia?",
+      "questionType": "text",
+      "options": []
+    },
+    {
+      "questionId": 13,
+      "questionText": "Kuinka todennäköisesti suosittelisit omaa suuntautumistasi muille? (1-5)",
+      "questionType": "text",
+      "options": []
+    },
+    {
+      "questionId": 14,
+      "questionText": "Kuinka todennäköisesti suosittelisit HH IT-Tradenomin koulutusohjelmaa muille? (1-5)",
+      "questionType": "text",
+      "options": []
+    },
+    {
+      "questionId": 15,
+      "questionText": "Vapaata palautetta/kehitysideoita:",
+      "questionType": "text",
+      "options": []
+    }
+  ]
 }
 ```
 ***
@@ -155,5 +375,6 @@ Deleting a survey will also delete all associated questions and responses. This 
 
 ## Notes:
 - **Minttu** (19.11.2025): Work in progress
+
 
 
