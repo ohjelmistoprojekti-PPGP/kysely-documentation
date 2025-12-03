@@ -115,68 +115,6 @@ JSON object containing an array of surveys. Each survey object includes the foll
         "questionType": "text",
         "options": []
       },
-      {
-        "questionId": 6,
-        "questionText": "Opintojesi toteutusmuoto?",
-        "questionType": "text",
-        "options": []
-      },
-      {
-        "questionId": 7,
-        "questionText": "Ikäsi:",
-        "questionType": "text",
-        "options": []
-      },
-      {
-        "questionId": 8,
-        "questionText": "Sukupuolesi:",
-        "questionType": "text",
-        "options": []
-      },
-      {
-        "questionId": 9,
-        "questionText": "Arviosi kurssitarjonnasta suuntautumisessasi:",
-        "questionType": "text",
-        "options": []
-      },
-      {
-        "questionId": 10,
-        "questionText": "Arviosi opetuksen laadusta:",
-        "questionType": "text",
-        "options": []
-      },
-      {
-        "questionId": 11,
-        "questionText": "Kuinka hyvin koet opintojen valmistavan sinua työelämään?",
-        "questionType": "text",
-        "options": []
-      },
-      {
-        "questionId": 12,
-        "questionText": "Kuinka hyvin koet kurssien vastaavan kuvauksia?",
-        "questionType": "text",
-        "options": []
-      },
-      {
-        "questionId": 13,
-        "questionText": "Kuinka todennäköisesti suosittelisit omaa suuntautumistasi muille? (1-5)",
-        "questionType": "text",
-        "options": []
-      },
-      {
-        "questionId": 14,
-        "questionText": "Kuinka todennäköisesti suosittelisit HH IT-Tradenomin koulutusohjelmaa muille? (1-5)",
-        "questionType": "text",
-        "options": []
-      },
-      {
-        "questionId": 15,
-        "questionText": "Vapaata palautetta/kehitysideoita:",
-        "questionType": "text",
-        "options": []
-      }
-    ]
-  },
   {
     "surveyId": 3,
     "surveyName": "Elementtikysely",
@@ -279,44 +217,6 @@ Fetch a specific survey by its unique identifier
       "questionType": "text",
       "options": []
     },
-    {
-      "questionId": 10,
-      "questionText": "Arviosi opetuksen laadusta:",
-      "questionType": "text",
-      "options": []
-    },
-    {
-      "questionId": 11,
-      "questionText": "Kuinka hyvin koet opintojen valmistavan sinua työelämään?",
-      "questionType": "text",
-      "options": []
-    },
-    {
-      "questionId": 12,
-      "questionText": "Kuinka hyvin koet kurssien vastaavan kuvauksia?",
-      "questionType": "text",
-      "options": []
-    },
-    {
-      "questionId": 13,
-      "questionText": "Kuinka todennäköisesti suosittelisit omaa suuntautumistasi muille? (1-5)",
-      "questionType": "text",
-      "options": []
-    },
-    {
-      "questionId": 14,
-      "questionText": "Kuinka todennäköisesti suosittelisit HH IT-Tradenomin koulutusohjelmaa muille? (1-5)",
-      "questionType": "text",
-      "options": []
-    },
-    {
-      "questionId": 15,
-      "questionText": "Vapaata palautetta/kehitysideoita:",
-      "questionType": "text",
-      "options": []
-    }
-  ]
-}
 ```
 
 **Possible status codes:**
@@ -386,42 +286,6 @@ Fetch a specific survey's questions by its unique identifier
     "questionType": "text",
     "options": []
   },
-  {
-    "questionId": 10,
-    "questionText": "Arviosi opetuksen laadusta:",
-    "questionType": "text",
-    "options": []
-  },
-  {
-    "questionId": 11,
-    "questionText": "Kuinka hyvin koet opintojen valmistavan sinua työelämään?",
-    "questionType": "text",
-    "options": []
-  },
-  {
-    "questionId": 12,
-    "questionText": "Kuinka hyvin koet kurssien vastaavan kuvauksia?",
-    "questionType": "text",
-    "options": []
-  },
-  {
-    "questionId": 13,
-    "questionText": "Kuinka todennäköisesti suosittelisit omaa suuntautumistasi muille? (1-5)",
-    "questionType": "text",
-    "options": []
-  },
-  {
-    "questionId": 14,
-    "questionText": "Kuinka todennäköisesti suosittelisit HH IT-Tradenomin koulutusohjelmaa muille? (1-5)",
-    "questionType": "text",
-    "options": []
-  },
-  {
-    "questionId": 15,
-    "questionText": "Vapaata palautetta/kehitysideoita:",
-    "questionType": "text",
-    "options": []
-  }
 ```
 
 **Possible status codes:**
@@ -562,66 +426,6 @@ Fetch all responses of a specific survey by its unique identifier
       "questionType": "text",
       "options": []
     }
-  },
-  {
-    "responseId": 10,
-    "responseText": "Hyvin paljon opettajakohtaista",
-    "question": {
-      "questionId": 10,
-      "questionText": "Arviosi opetuksen laadusta:",
-      "questionType": "text",
-      "options": []
-    }
-  },
-  {
-    "responseId": 11,
-    "responseText": "Osa kursseista hyvin, mutta valitettavasti suurin osa ei ollenkaan",
-    "question": {
-      "questionId": 11,
-      "questionText": "Kuinka hyvin koet opintojen valmistavan sinua työelämään?",
-      "questionType": "text",
-      "options": []
-    }
-  },
-  {
-    "responseId": 12,
-    "responseText": "Ei mielestäni joka kerta osu nappiin",
-    "question": {
-      "questionId": 12,
-      "questionText": "Kuinka hyvin koet kurssien vastaavan kuvauksia?",
-      "questionType": "text",
-      "options": []
-    }
-  },
-  {
-    "responseId": 13,
-    "responseText": "5",
-    "question": {
-      "questionId": 13,
-      "questionText": "Kuinka todennäköisesti suosittelisit omaa suuntautumistasi muille? (1-5)",
-      "questionType": "text",
-      "options": []
-    }
-  },
-  {
-    "responseId": 14,
-    "responseText": "3",
-    "question": {
-      "questionId": 14,
-      "questionText": "Kuinka todennäköisesti suosittelisit HH IT-Tradenomin koulutusohjelmaa muille? (1-5)",
-      "questionType": "text",
-      "options": []
-    }
-  },
-  {
-    "responseId": 15,
-    "responseText": "En osaa sanoa",
-    "question": {
-      "questionId": 15,
-      "questionText": "Vapaata palautetta/kehitysideoita:",
-      "questionType": "text",
-      "options": []
-    }
   }
 ```
 
@@ -651,6 +455,7 @@ description
 ```
 ***
 --!>
+
 
 
 
