@@ -95,53 +95,54 @@ JSON object containing an array of surveys. Each survey object includes the foll
 **Example Response:**
 
 ```
-  {
-    "surveyId": 2,
-    "surveyName": "HH-kysely",
-    "surveyDesc": "Kerro, mitä mieltä olet HH IT-Tradenomin koulutusohjelman opetuksen laadusta!",
-    "createdDate": "2025-11-25T19:13:54.43315",
-    "startingDate": "13.11.2025",
-    "endingDate": "22.12.2025",
+ {
+  "surveyId": 6,
+  "surveyName": "Haaga-Helia TRATI - Opetuksen laatukysely",
+  "surveyDesc": "Kerro, mitä mieltä olet HH IT-Tradenomin koulutusohjelman opetuksen laadusta!",
+  "createdDate": "2025-12-04T11:17:39.649185",
+  "startingDate": "2025-11-13",
+  "endingDate": "2025-12-22",
+  "questions": [
+    {
+      "questionId": 33,
+      "questionText": "Monennenko vuoden opiskelija olet?",
+      "questionType": "text",
+      "options": []
+    },
+    {
+      "questionId": 34,
+      "questionText": "Opintojesi suuntaus?",
+      "questionType": "radioButton",
+      "options": [
+        "ICT ja liiketoiminta",
+        "ICT-infra ja pilvipalvelut",
+        "Ohjelmistokehitys",
+        "Digitaaliset palvelut"
+      ]
+    },
+{
+    "surveyId": 7,
+    "surveyName": "HSL-sovelluksen toimivuus -kysely",
+    "surveyDesc": "Tämä kysely kerää palautetta HSL-sovelluksen toimivuudesta ja käyttäjäkokemuksesta palvelun kehittämistä varten.",
+    "createdDate": "2025-12-09T12:55:13.409984",
+    "startingDate": "2025-12-09",
+    "endingDate": "2025-12-30",
     "questions": [
       {
-        "questionId": 4,
-        "questionText": "Monennenko vuoden opiskelija olet?",
-        "questionType": "text",
-        "options": []
-      },
-      {
-        "questionId": 5,
-        "questionText": "Opintojesi suuntaus?",
-        "questionType": "text",
-        "options": []
-      },
-  {
-    "surveyId": 3,
-    "surveyName": "Elementtikysely",
-    "surveyDesc": "1 monivalinta kysymys ja 1 tekstikysymys",
-    "createdDate": "2025-11-25T19:13:54.451125",
-    "startingDate": "18.11.2025",
-    "endingDate": "20.12.2025",
-    "questions": [
-      {
-        "questionId": 16,
-        "questionText": "Minkä näistä valitsisit?",
+        "questionId": 55,
+        "questionText": "Oletko kohdannut teknisiä ongelmia sovellusta käyttäessäsi?",
         "questionType": "radioButton",
         "options": [
-          "tuli",
-          "vesi",
-          "ilma",
-          "maa"
+          "Kyllä",
+          "En"
         ]
       },
       {
-        "questionId": 17,
-        "questionText": "Miksi valitsit juuri kyseisen elementin?",
+        "questionId": 56,
+        "questionText": "Jos vastasit kyllä, millaisia teknisiä ongelmia olet huomannut?",
         "questionType": "text",
         "options": []
-      }
-    ]
-  }
+      },
 ```
 
 **Notes:** 
@@ -164,7 +165,7 @@ Fetch a specific survey by its unique identifier
 - Path Parameters: `surveyId` (long, required): The unique identifier of the survey
 
 **Example Request:**
-`GET /api/surveys/2`
+`GET /api/surveys/6`
 
 **Response:**
 - Body: JSON object with the survey's details.
@@ -174,45 +175,64 @@ Fetch a specific survey by its unique identifier
 
 ```
 {
-  "surveyId": 2,
-  "surveyName": "HH-kysely",
+  "surveyId": 6,
+  "surveyName": "Haaga-Helia TRATI - Opetuksen laatukysely",
   "surveyDesc": "Kerro, mitä mieltä olet HH IT-Tradenomin koulutusohjelman opetuksen laadusta!",
-  "createdDate": "2025-11-25T19:13:54.43315",
-  "startingDate": "13.11.2025",
-  "endingDate": "22.12.2025",
+  "createdDate": "2025-12-04T11:17:39.649185",
+  "startingDate": "2025-11-13",
+  "endingDate": "2025-12-22",
   "questions": [
     {
-      "questionId": 4,
+      "questionId": 33,
       "questionText": "Monennenko vuoden opiskelija olet?",
       "questionType": "text",
       "options": []
     },
     {
-      "questionId": 5,
+      "questionId": 34,
       "questionText": "Opintojesi suuntaus?",
-      "questionType": "text",
-      "options": []
+      "questionType": "radioButton",
+      "options": [
+        "ICT ja liiketoiminta",
+        "ICT-infra ja pilvipalvelut",
+        "Ohjelmistokehitys",
+        "Digitaaliset palvelut"
+      ]
     },
     {
-      "questionId": 6,
+      "questionId": 35,
       "questionText": "Opintojesi toteutusmuoto?",
-      "questionType": "text",
-      "options": []
+      "questionType": "radioButton",
+      "options": [
+        "Päivätoteutus",
+        "Monimuoto"
+      ]
     },
     {
-      "questionId": 7,
+      "questionId": 36,
       "questionText": "Ikäsi:",
-      "questionType": "text",
-      "options": []
+      "questionType": "radioButton",
+      "options": [
+        "alle 18-vuotias",
+        "18-24-vuotias",
+        "25-29-vuotias",
+        "30-34-vuotias",
+        "35 tai yli"
+      ]
     },
     {
-      "questionId": 8,
+      "questionId": 37,
       "questionText": "Sukupuolesi:",
-      "questionType": "text",
-      "options": []
+      "questionType": "radioButton",
+      "options": [
+        "Mies",
+        "Nainen",
+        "Muu",
+        "En halua kertoa"
+      ]
     },
     {
-      "questionId": 9,
+      "questionId": 38,
       "questionText": "Arviosi kurssitarjonnasta suuntautumisessasi:",
       "questionType": "text",
       "options": []
@@ -243,46 +263,72 @@ Fetch a specific survey's questions by its unique identifier
 
 
 **Example Request:**
-`GET /api/surveys/2/questions`
+`GET /api/surveys/6/questions`
 
 **Response:**
 - Body: JSON array of objects with the survey's question details. No survey details included.
 
 **Example Response:**
 ```
+ [
   {
-    "questionId": 4,
+    "questionId": 33,
     "questionText": "Monennenko vuoden opiskelija olet?",
     "questionType": "text",
     "options": []
   },
   {
-    "questionId": 5,
+    "questionId": 34,
     "questionText": "Opintojesi suuntaus?",
-    "questionType": "text",
-    "options": []
+    "questionType": "radioButton",
+    "options": [
+      "ICT ja liiketoiminta",
+      "ICT-infra ja pilvipalvelut",
+      "Ohjelmistokehitys",
+      "Digitaaliset palvelut"
+    ]
   },
   {
-    "questionId": 6,
+    "questionId": 35,
     "questionText": "Opintojesi toteutusmuoto?",
-    "questionType": "text",
-    "options": []
+    "questionType": "radioButton",
+    "options": [
+      "Päivätoteutus",
+      "Monimuoto"
+    ]
   },
   {
-    "questionId": 7,
+    "questionId": 36,
     "questionText": "Ikäsi:",
-    "questionType": "text",
-    "options": []
+    "questionType": "radioButton",
+    "options": [
+      "alle 18-vuotias",
+      "18-24-vuotias",
+      "25-29-vuotias",
+      "30-34-vuotias",
+      "35 tai yli"
+    ]
   },
   {
-    "questionId": 8,
+    "questionId": 37,
     "questionText": "Sukupuolesi:",
+    "questionType": "radioButton",
+    "options": [
+      "Mies",
+      "Nainen",
+      "Muu",
+      "En halua kertoa"
+    ]
+  },
+  {
+    "questionId": 38,
+    "questionText": "Arviosi kurssitarjonnasta suuntautumisessasi:",
     "questionType": "text",
     "options": []
   },
   {
-    "questionId": 9,
-    "questionText": "Arviosi kurssitarjonnasta suuntautumisessasi:",
+    "questionId": 39,
+    "questionText": "Arviosi opetuksen laadusta:",
     "questionType": "text",
     "options": []
   },
@@ -313,16 +359,23 @@ Although the backend mainly serves Thymeleaf-rendered pages, this endpoint is in
 
 **Example Request:**
 ```
-POST /api/surveys/2/responses
+POST /api/surveys/6/responses
 Content-Type: application/json
-
 [
   {
-    "responseText": "Sample answer",
-    "question": {
-      "questionId": 5
-    }
-  }
+    "responseText": "Kolmannen vuoden",
+    "question": { "questionId": 33 }
+  },
+  {
+    "responseText": "ICT-infra ja pilvipalvelut",
+    "question": { "questionId": 34 }
+  },
+  {
+    "responseText": "Monimuoto",
+    "question": { "questionId": 35 }
+  }, 
+  
+  (lisää vastauksia)
 ]
 ```
 
@@ -333,15 +386,44 @@ Content-Type: application/json
 ```
 [
   {
-    "responseId": 28,
-    "responseText": "Testivastaus",
+    "responseId": 140,
+    "responseText": "Kolmannen vuoden",
     "question": {
-      "questionId": 5,
-      "questionText": "Opintojesi suuntaus?",
+      "questionId": 33,
+      "questionText": "Monennenko vuoden opiskelija olet?",
       "questionType": "text",
       "options": []
     }
-  }
+  },
+  {
+    "responseId": 141,
+    "responseText": "ICT-infra ja pilvipalvelut",
+    "question": {
+      "questionId": 34,
+      "questionText": "Opintojesi suuntaus?",
+      "questionType": "radioButton",
+      "options": [
+        "ICT ja liiketoiminta",
+        "ICT-infra ja pilvipalvelut",
+        "Ohjelmistokehitys",
+        "Digitaaliset palvelut"
+      ]
+    }
+  },
+  {
+    "responseId": 142,
+    "responseText": "Monimuoto",
+    "question": {
+      "questionId": 35,
+      "questionText": "Opintojesi toteutusmuoto?",
+      "questionType": "radioButton",
+      "options": [
+        "Päivätoteutus",
+        "Monimuoto"
+      ]
+    }
+  },
+  (lisää vastauksia)
 ]
 ```
 
@@ -455,6 +537,7 @@ description
 ```
 ***
 --!>
+
 
 
 
